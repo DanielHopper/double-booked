@@ -36,9 +36,7 @@ Both of the provided functions accept a list of Event records, which has the fol
 (defrecord Event [name start end])
 ```
 
-The `start` and `end` fields are ISO 8601 datetime strings.
-
-How precise these strings are is up to the user (both solutions will work for anything from date specificity to millisecond specificity)
+The `start` and `end` fields are ISO 8601 datetime strings. How precise these strings are is up to the user (up to millisecond specificity). 
 
 Events are created like this:
 
