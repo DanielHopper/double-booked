@@ -20,7 +20,7 @@ This solution is simple, easy to understand, and results in less code. However, 
 
 This solution starts by splitting up Events into their start and end components. It then puts these components into a list, and sorts that list. This sorted list represents what you would see if you were to stack all events on a calendar. This means that, if one start component occurs before a previous event has been closed off by its end component, those two events overlap.
 
-By recording all 'active' events (those who haven't been closed by an end component), and using the combinatorics library to find all pairs of active events each time another is added, we can record all conflicts in one scan of the list. The conflicts are stored in a set structure, to ensure that duplicated aren't recorded.
+By recording all 'active' events (those who haven't been closed by an end component), and using the combinatorics library to find all pairs of active events each time another is added, we can record all conflicts in one scan of the list. The conflicts are stored in a set structure, to ensure that duplicates aren't recorded.
 
 Sort time complexity: O(n log n)
 
