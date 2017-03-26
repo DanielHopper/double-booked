@@ -26,7 +26,7 @@ Sort time complexity: O(n log n)
 
 Scan time complexity: O(n)
 
-**Total time complexity**: O(n \log n)
+**Total time complexity**: O(n log n)
 
 ## Usage
 
