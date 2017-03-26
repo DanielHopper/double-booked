@@ -1,17 +1,3 @@
-(get-calendar-map [a b])
-(map to-time-maps [a b])
-(defn to-time-maps [e]
-  (into (hash-map) (let [name   (get e :name)
-                         start  (get e :start)
-                         end    (get e :end)]
-                     (for [time (range start (+ end 1))]
-                       [time [name]]))))
-(map to-time-maps [a b])
-(get-calendar-map [a b])
-(get-calendar-map {} [a b])
-(fold + '(1 2 3 4))
-(reducers/fold + '(1 2 3 4))
-(require '[clojure.core.reducers :as reducers])
 (reducers/fold + '(1 2 3 4))
 (defn get-calendar-map [list-of-events]
   (reducers/fold (fn [xs x] (merge-with into x xs)) (map to-time-maps list-of-events)))
@@ -498,3 +484,17 @@ s-comp
 (time (dorun (get-conflicts-naive [t1 t2 t3 t4 t5])))
 (time (dorun (get-conflicts-naive [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5])))
 (time (dorun (get-conflicts-intervals [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5])))
+(defn walk-intervals [components active conflicts]
+  (cond
+    (empty? components) conflicts
+    (= :start (get (first components) :type))
+     (let [next-active (conj active (get (first components) :name))
+           next-conflicts (conj conflicts (map make-conflict (combo/combinations next-active 2)))]
+       (walk-intervals (rest components) next-active next-conflicts))
+    (= :end (get (first components) :type))
+     (let [next-active (disj active  (get (first components) :name))]
+       (walk-intervals (rest components) next-active conflicts))))
+(defn event-to-components [e]
+  [(->EventComponent (get e :start) :start (get e :name))
+   (->EventComponent (get e :end) :end (get e :name))])
+(get-conflicts-intervals [t1 t2 t3 t4 t5])
