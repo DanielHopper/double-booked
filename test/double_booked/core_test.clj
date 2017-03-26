@@ -50,3 +50,8 @@
   (testing "Five overlapping and increasingly shorter events, intervals algorithm"
     (is (= nested-overlap-sets
            (pairs-to-sets (get-conflicts-intervals [t6 t7 t8 t9 t10]))))))
+
+(deftest same-results-both-algorithms
+  (testing "If we give a bunch of events to both algorithms, do we get the same conflicts"
+    (is (= (pairs-to-sets (get-conflicts-intervals [t1 t2 t3 t4 t5 t6 t7 t8 t9 t10]))
+           (pairs-to-sets (get-conflicts-naive [t1 t2 t3 t4 t5 t6 t7 t8 t9 t10]))))))
