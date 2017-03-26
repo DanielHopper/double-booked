@@ -4,7 +4,7 @@ When maintaining a calendar of events, it is important to know if an event overl
 
 Given a sequence of events, each having a start and end time, the provided functions in this library will return the sequence of all pairs of overlapping events.
 
-For the purposes of this coding challenge, I have included two implementations to illustrate my thought process and discuss the tradeoffs between the two. Both are correct and return the same output, yet they have complexity/efficiency tradeoffs. I will document them both below.
+For the purposes of this coding challenge, I have included two implementations to illustrate my thought process and discuss the tradeoffs between the two. Both are correct and return the same output, yet they differ in efficiency. I will document them both below.
 
 (**Assumption**: start and end times are non-inclusive; an event that starts at time t0 will not conflict with an event that ends at time t0)
 
@@ -36,7 +36,7 @@ Both of the provided functions accept a list of Event records, which has the fol
 (defrecord Event [name start end])
 ```
 
-The `start` and `end` fields are ISO 8601 datetime strings. How precise these strings are is up to the user (up to millisecond specificity). 
+The `start` and `end` fields are ISO 8601 datetime strings. How precise these strings are is up to the user (up to millisecond specificity).
 
 Events are created like this:
 
