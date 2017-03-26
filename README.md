@@ -6,7 +6,7 @@ Given a sequence of events, each having a start and end time, the provided funct
 
 For the purposes of this coding challenge, I have included two implementations to illustrate my thought process and discuss the tradeoffs between the two. Both are correct and return the same output, yet they have complexity/efficiency tradeoffs. I will document them both below.
 
-(**Assumption**: start and end times are non-inclusive; an event that starts at time $t_0$ will not conflict with an event that ends at time $t_0$)
+(**Assumption**: start and end times are non-inclusive; an event that starts at time t0 will not conflict with an event that ends at time t0)
 
 ### get-conflicts-naive
 
@@ -14,7 +14,7 @@ This is simply the naive algorithm for solving this problem. It uses the Clojure
 
 This solution is simple, easy to understand, and results in less code. However, it is inefficient, and we can do better.
 
-**Total time complexity**: $O(n^2)$
+**Total time complexity**: O(n^2)
 
 ### get-conflicts-intervals
 
@@ -22,10 +22,11 @@ This solution starts by splitting up Events into their start and end components.
 
 By recording all 'active' events (those who haven't been closed by an end component), and using the combinatorics library to find all pairs of active events each time another is added, we can record all conflicts in one scan of the list. The conflicts are stored in a set structure, to ensure that duplicated aren't recorded.
 
-Sort time complexity: $O(n \log n)$
-Scan time complexity: $O(n)$
+Sort time complexity: O(n log n)
 
-**Total time complexity**: $O(n \log n)$
+Scan time complexity: O(n)
+
+**Total time complexity**: O(n \log n)
 
 ## Usage
 
