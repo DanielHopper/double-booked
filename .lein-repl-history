@@ -1,0 +1,376 @@
+(conj :a (conj :b nil))
+(conj :a nil)
+(conj :a [])
+(conj 'a' [])
+(conj 1 nil)
+(conj 1 2)
+(conj nil :a)
+(conj (conj :a) :b)
+(conj (conj nil :a) :b) 
+(first (conj (conj nil :a) :b) )
+(arraymap (conj (conj nil :a) :b) )
+(array-map (conj (conj nil :a) :b) )
+(count (conj (conj nil :a) :b) )
+(conj (conj :b [:a])) 
+(conj [:b] :a) 
+(conj [:b] [:a]) 
+(conj [:b] :a) 
+(hash-map)
+(assoc (hash-map) :a 'a')
+(def mapz (hash-map))
+mapz
+(assoc mapz :a 'a)
+mapz
+(get mapz :a)
+(def mapz (assoc mapz :a 'a))
+mapz
+(get mapz :a)
+(def mapz (assoc mapz :b ['b]))
+mapz
+(assoc mapz :b (conj (get mapz :b) 'c))
+(System/currentTimeMillis)
+[clj-time "0.13.0"]
+exit
+(require '[clj-time.coerce :as c])
+c
+(c/to-long "2016-05-31")
+(c/to-long "2016-05-31-12:30:34")
+(c/to-long "2016-05-31T12:30:34")
+a
+(defrecord Rin [t y o])
+(Rin :r :g:)
+(Rin :r :g)
+(Rin. :r :g)
+(Rin. :r :g :u)
+(empty? [])
+(Rin. :r :g :u)
+(Rin. :r :g :u).t
+(get (Rin. :r :g :u) t
+)
+(get (Rin. :r :g :u) t)
+(get (Rin. :r :g :u) :t)
+(defrecord Event [name start end])
+(get (def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59")) name)
+(get (def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59")) :name)
+(get (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59") :name)
+(into ["adsad"] ["bbb" "ccc"])
+(defn to-time-maps [e]
+  (into (hash-map) (let name  (get e :name)
+                        start (get e :start)
+                        end   (get e :end)]
+                     (for [time (range start end)]
+                       [time [name]]))))
+(defn to-time-maps [e]
+  (into (hash-map) (let [name   (get e :name)
+                         start  (get e :start)
+                         end    (get e :end)]
+                     (for [time (range start end)]
+                       [time [name]]))))
+(defrecord Event [name start end])
+(def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59"))
+(def a (Event. "My Birthday" 12 15))
+(def b (Event. "Your Birthday" 14 17))
+(defn get-calendar-map [list-of-events]
+  (merge-with into (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(map to-time-maps [a b])
+(defn to-time-maps [e]
+  (into (hash-map) (let [name   (get e :name)
+                         start  (get e :start)
+                         end    (get e :end)]
+                     (for [time (range start (+ end 1))]
+                       [time [name]]))))
+(map to-time-maps [a b])
+(get-calendar-map [a b])
+(get-calendar-map {} [a b])
+(fold + '(1 2 3 4))
+(reducers/fold + '(1 2 3 4))
+(require '[clojure.core.reducers :as reducers])
+(reducers/fold + '(1 2 3 4))
+(defn get-calendar-map [list-of-events]
+  (reducers/fold (fn [xs x] (merge-with into x xs)) (map to-time-maps list-of-events)))
+(get-calendar-map {} [a b])
+(get-calendar-map [a b])
+a
+b
+(get-calendar-map [a b])
+(get-calendar-map {})
+(defn diddly ([xs ([] []))
+(defn get-calendar-map [list-of-events]
+  (reducers/fold diddly (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(defn combinef ([xs x] (merge-with into x xs)) ([] {})
+)
+(defn get-calendar-map [list-of-events]
+  (reducers/fold combinef (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(seq (get-calendar-map [a b]))
+(filter (fn [x y] (> (count y) 1)) (seq (get-calendar-map [a b]))) 
+(filter (fn [x] (> (count (second x)) 1)) (seq (get-calendar-map [a b]))) 
+(def conflicts (filter (fn [x] (> (count (second x)) 1)) (seq (get-calendar-map [a b]))))
+conflicts
+(require '[clojure.math.combinatorics :as combo])
+classpath
+(require '[org.clojure.math.combinatorics :as combo])
+(require '[clojure.math.combinatorics :as combo])
+(require [clojure.math.combinatorics :as combo])
+combo
+(:require [clojure.math.combinatorics :as combo])
+exit
+combo
+(require [clojure.math.combinatorics])
+(require '[clojure.math.combinatorics])
+(ns example.core
+  (:require [clojure.math.combinatorics :as combo]))
+(require '[clojure.math.combinatorics])
+(require '[org.clojure.math.combinatorics])
+(require '[clojure/math.combinatorics])
+(require '[clojure.math.combinatorics])
+(require '[double-booked.core])
+exit
+(require '[double-booked.core])
+exit
+(require '[double-booked.core])
+exit
+combo
+exit
+combo
+(require '[clojure.math.combinatorics :as combo])
+(defrecord Rin [t y o])
+(Rin :r :g:)
+(Rin :r :g)
+(Rin. :r :g)
+(Rin. :r :g :u)
+(empty? [])
+(Rin. :r :g :u)
+(Rin. :r :g :u).t
+(get (Rin. :r :g :u) t
+)
+(get (Rin. :r :g :u) t)
+(get (Rin. :r :g :u) :t)
+(defrecord Event [name start end])
+(get (def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59")) name)
+(get (def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59")) :name)
+(get (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59") :name)
+(into ["adsad"] ["bbb" "ccc"])
+(defn to-time-maps [e]
+  (into (hash-map) (let name  (get e :name)
+                        start (get e :start)
+                        end   (get e :end)]
+                     (for [time (range start end)]
+                       [time [name]]))))
+(defn to-time-maps [e]
+  (into (hash-map) (let [name   (get e :name)
+                         start  (get e :start)
+                         end    (get e :end)]
+                     (for [time (range start end)]
+                       [time [name]]))))
+(defrecord Event [name start end])
+(def a (Event. "My Birthday" "05-31-95T00:00:00" "05-31-95T23:59:59"))
+(def a (Event. "My Birthday" 12 15))
+(def b (Event. "Your Birthday" 14 17))
+(defn get-calendar-map [list-of-events]
+  (merge-with into (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(map to-time-maps [a b])
+(defn to-time-maps [e]
+  (into (hash-map) (let [name   (get e :name)
+                         start  (get e :start)
+                         end    (get e :end)]
+                     (for [time (range start (+ end 1))]
+                       [time [name]]))))
+(map to-time-maps [a b])
+(get-calendar-map [a b])
+(get-calendar-map {} [a b])
+(fold + '(1 2 3 4))
+(reducers/fold + '(1 2 3 4))
+(require '[clojure.core.reducers :as reducers])
+(reducers/fold + '(1 2 3 4))
+(defn get-calendar-map [list-of-events]
+  (reducers/fold (fn [xs x] (merge-with into x xs)) (map to-time-maps list-of-events)))
+(get-calendar-map {} [a b])
+(get-calendar-map [a b])
+a
+b
+(get-calendar-map [a b])
+(get-calendar-map {})
+(defn diddly ([xs ([] []))
+(defn get-calendar-map [list-of-events]
+  (reducers/fold diddly (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(defn combinef ([xs x] (merge-with into x xs)) ([] {})
+)
+(defn get-calendar-map [list-of-events]
+  (reducers/fold combinef (map to-time-maps list-of-events)))
+(get-calendar-map [a b])
+(seq (get-calendar-map [a b]))
+(filter (fn [x y] (> (count y) 1)) (seq (get-calendar-map [a b]))) 
+(filter (fn [x] (> (count (second x)) 1)) (seq (get-calendar-map [a b]))) 
+(def conflicts (filter (fn [x] (> (count (second x)) 1)) (seq (get-calendar-map [a b]))) )
+conflicts
+(combo/combinations conflicts 2)
+(map conflicts (fn [x] (combo/combinations (second conflicts) 2)))
+(map conflicts (fn [x] (combo/combinations (second x) 2)) conflicts
+)
+(map conflicts (fn [x] (combo/combinations (second x) 2)))
+(map (fn [x] (combo/combinations (second x) 2)) conflicts)
+(flatten (map (fn [x] (combo/combinations (second x) 2)) conflicts))
+(map (fn [x] (combo/combinations (second x) 2)) conflicts)
+(map (fn [x] (EventConflict. (combo/combinations (second x) 2)) conflicts)
+)
+(defrecord EventConflict [name1 name2])
+(map (fn [x] (EventConflict. (combo/combinations (second x) 2)) conflicts)
+)
+(defn make-conflict [event-names]
+  (->EventConflict (first event-names) (second event-names)))
+(map (fn [x] (make-conflict (combo/combinations (second x) 2)) conflicts))
+(map (fn [x] (map make-conflict (combo/combinations (second x) 2))) conflicts)
+(flatten (map (fn [x] (map make-conflict (combo/combinations (second x) 2))) conflicts))
+(unique (flatten (map (fn [x] (map make-conflict (combo/combinations (second x) 2))) conflicts)))
+(distinct (flatten (map (fn [x] (map make-conflict (combo/combinations (second x) 2))) conflicts)))
+(defn collect-conflicts [list-of-events]
+  (let [conflicting-events  (filter
+                              (fn [x] (> (count (second x)) 1))
+                              (seq (get-calendar-map [a b])))
+        conflict-pairs      (map
+                              (fn [x] (map make-conflict (combo/combinations (second x) 2)))
+                              conflicting-events)]
+    (flatten conflict-pairs)))
+(defn get-conflicts [list-of-events]
+  (distinct (collect-conflicts list-of-events)))
+(get-conflicts [a b])
+(def t1 (Event. "My Birthweek" "05-31-95" "06-07-95"))
+(def t2 (Event. "My Birthday" "05-31-95" "06-01-95"))
+(def t3 (Event. "First of June" "06-01-95" "06-02-95"))
+(def t4 (Event. "Winter Break" "12-22-95" "01-05-96"))
+(def t5 (Event. "Christmas" "12-25-95" "12-26-95"))
+(get-conflicts [t1 t2 t3 t4 t5])
+(defn collect-conflicts [list-of-events]
+  (let [conflicting-events  (filter
+                              (fn [x] (> (count (second x)) 1))
+                              (seq (get-calendar-map [list-of-events])))
+        conflict-pairs      (map
+                              (fn [x] (map make-conflict (combo/combinations (second x) 2)))
+                              conflicting-events)]
+    (flatten conflict-pairs)))
+(get-conflicts [t1 t2 t3 t4 t5])
+(get-conflicts [t1 t2 t3 t4])
+(get-conflicts [t1 t2 t3])
+(get-conflicts [t1 t2])
+(c/to-long "05-31-95")
+(require '[clj-time.coerce :as c])
+(c/to-long "05-31-95")
+(c/to-long "05-31-17")
+(c/to-long "05-31-2017")
+(c/to-long "2017-05-31")
+(def t1 (Event. "My Birthweek" "1995-05-31" "1995-06-07"))
+(def t2 (Event. "My Birthday" "1995-05-31" "1995-06-01-95"))
+(def t3 (Event. "First of June" "1995-06-01" "1995-06-02"))
+(def t4 (Event. "Winter Break" "1995-12-22" "1996-01-05"))
+(def t5 (Event. "Christmas" "1995-12-25" "1995-12-26"))
+(get-conflicts [t1 t2 t3 t4 t5])
+(get-conflicts [t1 t2])
+(c/to-long "1995-12-25")
+(defn make-event [name start end]
+  (->Event name (c/to-long start) (c/to-long end)))
+(make-event "my birhday" "1995-05-31" "1995-06-01")
+(def t1 (make-event "My Birthweek" "1995-05-31" "1995-06-07"))
+(def t2 (make-event "My Birthday" "1995-05-31" "1995-06-01-95"))
+(def t3 (make-event "First of June" "1995-06-01" "1995-06-02"))
+(def t4 (make-event "Winter Break" "1995-12-22" "1996-01-05"))
+(def t5 (make-event "Christmas" "1995-12-25" "1995-12-26"))
+t5
+(get-conflicts [t1 t2 t3 t4 t5])
+a
+t1
+t2
+(def t2 (make-event "My Birthday" "1995-05-31" "1995-06-01"))
+(get-conflicts [t1 t2 t3 t4 t5])
+t1
+t2
+t3
+t4
+t5
+(get-conflicts [a b])
+(collect-conflicts [a b])
+(get-calendar-map [a b])
+(get-calendar-map [t1 t2 t3 t4 t5])
+(/ 819936000000 60000)
+(defn make-event [name start end]
+  (->Event name (/ (c/to-long start) 60000) (/ (c/to-long end) 60000)))
+(t1
+)
+t1
+(def t1 (make-event "My Birthweek" "1995-05-31" "1995-06-07"))
+(def t2 (make-event "My Birthday" "1995-05-31" "1995-06-01"))
+(def t3 (make-event "First of June" "1995-06-01" "1995-06-02"))
+(def t4 (make-event "Winter Break" "1995-12-22" "1996-01-05"))
+(def t5 (make-event "Christmas" "1995-12-25" "1995-12-26"))
+t1
+t2
+(get-calendar-map [t1 t2 t3 t4 t5])
+(collect-conflicts [a b])
+(defn collect-conflicts [list-of-events]
+  (let [conflicting-events  (filter
+                              (fn [x] (> (count (second x)) 1))
+                              (seq (get-calendar-map list-of-events)))
+        conflict-pairs      (map
+                              (fn [x] (map make-conflict (combo/combinations (second x) 2)))
+                              conflicting-events)]
+    (flatten conflict-pairs)))
+(collect-conflicts [a b])
+(collect-conflicts [t1 t2 t3 t4 t5])
+(get-conflicts [t1 t2 t3 t4 t5])
+(get-conflicts [t1 t2 t3 t4 t5 t2 t2 t2 t2 t2 t2 t2 t2])
+(get-conflicts [t1 t2 t3 t4 t5 t2 t2 t2 t2 t2 t2 t2 t2 t3 t3 t3 t3 t3 t3 t3 t2 t3 t3 t3 t5 t7 t4 t1 t4 t9])
+(get-conflicts [t1 t2 t3 t4 t5 t2 t2 t2 t2 t2 t2 t2 t2 t3 t3 t3 t3 t3 t3 t3 t2 t3 t3 t3 t5 t4 t1 t4])
+(combo/combinations [t1 t2 t3 t4 t5])
+(combo/combinations [t1 t2 t3 t4 t5] 2)
+(defn get-conflicts-naive [list-of-events]
+  (let [event-pairs   (combo/combinations list-of-events 2)]
+    (filter filter-fn event-pairs)))
+(defn filter-fn [event-pair]
+  (or (< (get start (first event-pair)) (get end (second event-pair)))
+      (< (get start (second event-pair)) (get end (first event-pair)))))
+(defn filter-fn [event-pair]
+  (or  (and (<= (get :start (first event-pair)) (get :end (second event-pair)))
+            (>= (get :end (first event-pair)) (get :start (second event-pair))))
+       (and (<= (get :start (second event-pair)) (get :end (first event-pair)))
+            (>= (get :end (second event-pair)) (get :start (first event-pair))))))
+(defn get-conflicts-naive [list-of-events]
+  (let [event-pairs   (combo/combinations list-of-events 2)]
+    (filter filter-fn event-pairs)))
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+t1
+t2
+t3
+t4
+t5
+(combo/combinations [t1 t2 t3 t4 t5] 2)
+(defn filter-fn [event-pair]
+  (or  (and (<= (get (first event-pair) :start) (get (second event-pair) :end))
+            (>= (get (first event-pair) :end) (get (second event-pair) :start)))
+       (and (<= (get (second event-pair) :start) (get (first event-pair) :end))
+            (>= (get (second event-pair) :end) (get (first event-pair) :start)))))
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+(get-conflicts [t1 t2 t3 t4 t5])
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+(defn get-conflicts-naive [list-of-events]
+  (let [event-pairs   (combo/combinations list-of-events 2)]
+    (map make-conflict (filter filter-fn event-pairs))))
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+(distinct (get-conflicts-naive [t1 t2 t3 t4 t5]))
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+(defn get-conflicts-naive [list-of-events]
+  (let [event-pairs   (combo/combinations list-of-events 2)]
+    (filter filter-fn event-pairs)))
+(get-conflicts-naive [t1 t2 t3 t4 t5])
+(get-conflicts-naive [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5])
+(distinct (get-conflicts-naive [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5]))
+(get-conflicts [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5])
+(distinct (get-conflicts-naive [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5]))
+(time (dorun (distinct (get-conflicts-naive [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5]))))
+(time (dorun (distinct (get-conflicts [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5]))))
+(time (dorun (distinct (get-conflicts [t1 t2 t3 t4 t5]))))
+(time (dorun (distinct (get-conflicts-naive [t1 t2 t3 t4 t5]))))
+(time (dorun (distinct (map to-time-maps [t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t4 t5 t1 t2 t3 t5]))))
